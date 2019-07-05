@@ -4,9 +4,8 @@ Core part of the Fabric ledger spec.
 
 ## Status
 
+- **作業中** v0.2: [Ledger.tla](Ledger.tla) で type 以外の invariant を証明する
 - v0.1: [Ledger.tla](Ledger.tla) で純粋な type invariant が証明できた
-
-TODO: v0.2 へ向けて作業中。Type 以外の invariant を証明する
 
 ## Files
 
