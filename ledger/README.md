@@ -1,0 +1,34 @@
+# Ledger 
+
+Core part of the Fabric ledger spec.
+
+## Files
+
+Read "モデリングの方針" for details.
+
+- [Ledger.tla](Ledger.tla): Ledger のハイレベル仕様
+- [MVCC_Ledger.tla](MVCC_Ledger.tla): Ledger の MVCC 仕様
+
+## 証明すること
+
+Fabric のコンセンサス実装の safety である。
+Safety を TLA+ の reinement により証明する
+
+
+## 用語
+
+- ピア (peer): データを保持・同期する計算ノード。次に述べるように台帳、さらにいうとその状態をもち、それらの同期をとることにより単一の state machine として外部に対して振る舞う。
+  - 状態 (world state): state machine としての状態。各ピアの状態が同一であることが要求される。
+  - 台帳 (ledger):
+  - ブロックチェーン (blockchain): 台帳の同期をとるためのデータ構造
+- リクエスト (request): クライアントから届いた生の形のサービスリクエスト。Ledger に対してす要求する操作 (operaton) の中身が書かれている。
+- TX (transaction): リクエストが受け付けられて peer のキューに格納されるときの形式になったもの。
+
+## モデリングの方針
+
+3段階の refinement により証明する。
+
+- 1段階目: ハイレベル仕様として、単一の peer で動作するモデルを考える。MVCC は適用しない。
+リクエストが到達したら順番を確定させ、未処理 TX としてキューに格納する。処理時に操作を適用し、world state の状態を更新する。
+- 2段階目: MVCCを適用。この時点では 1 peer のためあまり意味がないが後で使う。状態機械への適用をすぐに行うのではなくて、Orderer (未定義) に submit する前に peer で仮実行したものをリクエストに加えて TX として submit する。
+- 3段階目: さらに複数の peer で仮実行結果を突き合わせることによって合意をとり、耐障害性などを担保する。
