@@ -1,0 +1,165 @@
+% macc11.sty Feb. 18, 1994 by Hideki ISOZAKI isozaki@ntt-20.ntt.jp
+% compsoft9.sty Dec. 2 1991 By Yasuki SAITO
+% compsoft9.sty Apr. 24 '91 By Hideki ISOZAKI
+% j-art10.sty 10-Feb-89 from art10.sty 22-Dec-87
+
+% 1mm = 2.8452755905pt, 1pt = .3514598035mm, 1Q = 0.25mm = .7113188976pt
+%
+% For footnotesize
+% wd: 8.1906pt, ht: 6.7452pt, dp: 1.44539pt
+% depth_of_9pt_kanji = 1.4454pt
+% height_of_9pt_kanji = 6.7452pt
+% width_of_9pt_kanji = 8.1906pt
+% line = height_plus_depth_of_9pt_kanji = 8.1906pt = 2.879mm ~= 11.5Q
+% baselineskip = line + gap = 17Q = 4.25mm = 12.09pt
+% gap = baselineskip - line = 12.0925pt - 8.1906pt = 3.909pt
+
+% For references
+% baselineskip = line + gap = 17Q = 4.25mm = 12.09pt
+% gap = baselineskip - line = 12.0925pt - 8.1906pt = 3.909pt = 1.374mm = 5.5Q
+% gap + depth = 3.909pt + 1.4454pt = 5.35pt
+
+% For normalsize
+% depth_of_11pt_kanji = 1.5827pt
+% line = height_plus_depth_of_11pt_kanji = 10.0238pt = 3.523mm = 14.1Q
+% baselineskip = line + gap = 14.1Q + 9.9Q = 24Q = 6mm 
+% gap = 9.9Q = 2.475mm = 7.042pt
+% gap + depth = 8.625pt = 3.031mm = 12.1Q
+
+\newlength{\Q} \setlength{\Q}{0.2mm}
+
+\lineskip\z@ \normallineskip\z@ \jot\z@ \lineskiplimit\z@
+\def\baselinestretch{1}
+
+\def\@normalsize{\@setsize\normalsize{21\Q}\xipt\@xipt
+\abovedisplayskip \z@\belowdisplayskip \abovedisplayskip
+\abovedisplayshortskip \z@\belowdisplayshortskip\z@
+\let\@listi\@listI} 
+
+\def\small{\@setsize\small{17\Q}\xpt\@xpt
+\abovedisplayskip \z@\belowdisplayskip \abovedisplayskip
+\abovedisplayshortskip \z@\belowdisplayshortskip\z@
+\def\@listi{\leftmargin\leftmargini \topsep\z@\parsep\z@
+\itemsep \parsep}}
+
+\def\footnotesize{\@setsize\footnotesize{17\Q}\ixpt\@ixpt
+\abovedisplayskip\z@\belowdisplayskip \abovedisplayskip
+\abovedisplayshortskip \z@\belowdisplayshortskip\z@
+\def\@listi{\leftmargin\leftmargini \topsep\z@\parsep\z@
+\itemsep \parsep}}
+
+\def\scriptsize{\@setsize\scriptsize{12pt}\viipt\@viipt}
+\def\tiny{\@setsize\tiny{6pt}\vipt\@vipt}
+\def\large{\@setsize\large{25\Q}\xiipt\@xiipt}% baselineskip=>normalsize
+\def\Large{\@setsize\Large{25\Q}\xivpt\@xivpt}
+\def\LARGE{\@setsize\LARGE{30\Q}\xviipt\@xviipt}
+\def\huge{\@setsize\huge{35\Q}\xxpt\@xxpt}
+\def\Huge{\@setsize\Huge{40\Q}\xxvpt\@xxvpt}
+\def\normalsize{\@normalsize}
+
+\@normalsize 
+\oddsidemargin 30pt 
+\evensidemargin 30pt
+\topmargin 15pt
+\headheight 12pt
+\headsep 15pt
+\footskip 2\baselineskip
+
+\newdimen\@mojihaba
+\settowidth{\@mojihaba}{あ}
+
+% texheight = 35 normalsize baselineskip 
+\textheight = 210.1mm
+
+% topskip = line - depth_of_11pt_kanji = 10.0238pt - 1.5827pt = 8.44pt
+\topskip = 8.45pt
+
+% columnsep = 2*width_of_11pt_kanji = 7.04mm
+\columnsep 7.04mm
+
+% 39*width_of_11pt_kanji
+\textwidth 136.58mm
+
+\columnseprule 0pt 
+
+%\footnotesep must be \baselineskip-\depth = 12.09pt - 1.4454pt = 10.64pt
+% but this is too wide
+%\footnotesep 10.64pt
+%\footnotesep 8.44112pt % = line height
+\footnotesep 10.02pt % = line height + depth = 8.44112pt + 1.4454pt
+% you want to make a gap between footnoterule and first footnote 2Q, but...
+%\footnotesep 2\Q % This does not work! you must do something in \@makecol
+
+%\skip\footins 10\Q plus 21.5\Q
+\skip\footins 10\Q plus 11.5\Q minus 1\Q
+
+\floatsep \baselineskip \textfloatsep \baselineskip 
+\intextsep \baselineskip \@maxsep \z@
+\dblfloatsep \baselineskip \dbltextfloatsep \baselineskip \@dblmaxsep \z@
+\@fptop 0pt plus 1fil \@fpsep 0pt plus 2fil \@fpbot 0pt plus 1fil 
+\@dblfptop 0pt plus 1fil \@dblfpsep 0pt plus 2fil \@dblfpbot 0pt plus 1fil
+
+\parskip\z@ \parindent \@mojihaba \partopsep\z@
+\@lowpenalty 51 \@medpenalty 151 \@highpenalty 301 
+\@beginparpenalty -\@lowpenalty \@endparpenalty -\@lowpenalty \@itempenalty
+-\@lowpenalty 
+
+
+\def\section{\@startsection {section}{1}{0pt}{20\Q}{4\Q}{\font@s}}
+\def\subsection
+ {\@startsection{subsection}{2}{0pt}{\baselineskip}{0.001pt}{\font@ss}}
+\def\subsubsection
+ {\@startsection{subsubsection}{3}{0pt}{0.001pt}{0.001pt}{\font@sss}}
+\def\paragraph{\@startsection
+ {paragraph}{4}{0pt}{\baselineskip}{0.001pt}{\normalsize\bf}}
+\def\subparagraph{\@startsection
+ {subparagraph}{5}{0pt}{\baselineskip}{0.001pt}{\normalsize\bf}}
+
+\setcounter{secnumdepth}{5}
+
+\def\appendix{\par
+ \setcounter{section}{0}
+ \setcounter{subsection}{0}
+ \def\thesection{\Alph{section}}}
+
+\def\sectionfont#1#2#3{\gdef\font@s{#1}\gdef\font@ss{#2}\gdef\font@sss{#3}}
+\sectionfont{\large\bf}{\normalsize\bf}{\normalsize\bf}
+
+
+
+\leftmargini2\@mojihaba
+\leftmarginii2\@mojihaba
+\leftmarginiii2\@mojihaba
+\leftmarginiv2\@mojihaba
+\leftmarginv2\@mojihaba
+\leftmarginvi2\@mojihaba
+\leftmargin\leftmargini
+
+\labelsep 0.75\@mojihaba % 3/4*\@mojihaba
+
+\labelwidth\@mojihaba\advance\labelwidth-\labelsep
+
+\def\@listI{\leftmargin\leftmargini\parsep\z@\topsep\z@\itemsep\z@}
+\let\@listi\@listI
+\@listi 
+
+\def\@listii{\leftmargin\leftmarginii
+ \labelwidth\@mojihaba\advance\labelwidth-\labelsep
+ \topsep\z@ \parsep\z@ \itemsep \parsep}
+
+\def\@listiii{\leftmargin\leftmarginiii
+ \labelwidth\@mojihaba\advance\labelwidth-\labelsep
+ \topsep \z@ \parsep \z@ \partopsep \z@ \itemsep \topsep}
+
+\def\@listiv{\leftmargin\leftmarginiv
+ \labelwidth\@mojihaba\advance\labelwidth-\labelsep}
+
+\def\@listv{\leftmargin\leftmarginv
+ \labelwidth\@mojihaba\advance\labelwidth-\labelsep}
+
+\def\@listvi{\leftmargin\leftmarginvi
+ \labelwidth\@mojihaba\advance\labelwidth-\labelsep}
+
+
+
+\endinput

@@ -2,6 +2,12 @@
 
 Core part of the Fabric ledger spec.
 
+## Status
+
+- v0.1: [Ledger.tla](Ledger.tla) で純粋な type invariant が証明できた
+
+TODO: v0.2 へ向けて作業中。Type 以外の invariant を証明する
+
 ## Files
 
 Read "モデリングの方針" for details.
@@ -9,7 +15,23 @@ Read "モデリングの方針" for details.
 - [Ledger.tla](Ledger.tla): Ledger のハイレベル仕様
 - [MVCC_Ledger.tla](MVCC_Ledger.tla): Ledger の MVCC 仕様
 
-## 証明すること
+## TLA+ Toolbox でのインストール方法
+
+プロジェクトのインポート機能がないようなのでこうする:
+
+- 新規 `Specification` を作成する
+-  Ledger.tla をルートファイルをして指定する
+- `Module` を追加するメニューを選び、[MVCC_Ledger.tla](MVCC_Ledger.tla) を指定する
+
+TLAPS を使って証明するだけであれば、どれをルートファイルにしてもあまり関係ない
+
+### 証明の確認方法
+
+Mac の場合、ファイルの戦闘で `コマンド-g コマンド-g` で行える。
+
+- [Ledger.tla](Ledger.tla) では下部の `THEOREM` で type invariant が証明されている
+
+### TODO
 
 Fabric のコンセンサス実装の safety である。
 Safety を TLA+ の reinement により証明する

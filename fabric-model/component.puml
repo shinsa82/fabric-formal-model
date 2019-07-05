@@ -1,0 +1,49 @@
+@startuml
+
+[Client 1]
+[Client 2]
+
+package "Org 1" {
+    [Peer 1]
+    [Peer 2]
+    [CouchDB 1]
+    [Smart Contract 1]
+    [CouchDB 2]
+    [Smart Contract 2]
+}
+
+package "Org 2" {
+    [Peer 3] <--> [CouchDB 3]: data access
+    [Peer 3] --> [Smart Contract 3]: simulate
+}
+
+[Peer 1] <-r-> [Peer 2]: gossip
+[Peer 1] <-d-> [CouchDB 1]: data access
+[Peer 1] -d-> [Smart Contract 1]: simulate
+[Peer 2] <-d-> [CouchDB 2]: data access
+[Peer 2] -d-> [Smart Contract 2]: simulate
+
+[Client 1] <--> [Peer 1]: proposal request
+[Client 1] <--> [Peer 2]: proposal request
+[Client 2] <--> [Peer 3]: proposal request
+
+package "Org 3" {
+    [Peer 5] -- [CouchDB 5]
+}
+
+package "Org 4" {
+    [Peer 7] -- [CouchDB 7]
+}
+
+[Client 1] -d-> [Orderer]: submit
+[Client 2] -d-> [Orderer]: submit
+
+[Peer 1] <.> [Peer 5]: (external) gossip
+
+[Orderer] --> [Peer 1]: broadcast
+[Orderer] --> [Peer 3]: broadcast
+[Orderer] --> [Peer 5]: broadcast
+[Orderer] --> [Peer 7]: broadcast
+
+
+@enduml

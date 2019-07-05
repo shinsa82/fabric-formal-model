@@ -1,0 +1,140 @@
+%
+% Example file
+%
+
+\documentclass{fose2019}           % for pLaTeX2e
+%\documentclass[english]{fose2016} % for English papers
+%\documentclass[ascii]{fose2016}   % for ASCII pTeX
+
+\usepackage[dvipdfmx]{graphicx}
+%\usepackage{epsfig}
+
+\title{分散台帳技術の実装の形式検証}
+\etitle{Formal Verification of DLT Consensus Algorithms}
+\journalhead{Shortened English Title}
+\author{齋藤 新}{Shin Saito, IBM Research-Tokyo}
+\author{その他}{Others, other}
+
+\begin{document}
+
+\maketitle
+
+
+\begin{abstract}
+分散台帳技術の安全性を形式仕様記述フレームワークで行った。
+定理証明を用いて検証。
+2段階のリファインメントによりモデル化と検証を行った。
+TLAの使用で得た知見も紹介。
+\end{abstract}
+\begin{eabstract}
+To appear.
+\end{eabstract}
+
+\section{Introduction}
+背景を書く。
+分散台帳技術は暗号資産の実装プラットフォームとして広く用いられるようになった。
+
+形式検証することの意義:
+
+\begin{itemize}
+\item 正確な実装の保証。バグの回避。暗号資産に適用する場合などには、バグによる被害は大きい。
+\item 実装が満たす性質を厳密に定義することにより、分析や改良が進む。
+\item 実装を作る参考になる。たとえば Fabric ではチェーンコードやworld state、コンセンサスアルゴリズムはプラグイン可能になっている。実装者がプラグインを作成する際に形式的に書かれた仕様があれば安心・安全である。
+\end{itemize}
+
+\section{分散台帳技術}
+分散台帳技術の概要を説明。
+
+\subsection{Hyperledger Fabric}
+
+Fabricの説明。コンソーシアム型であることなどの特徴。
+コンセンサスの特徴。
+
+\section{形式検証支援系}
+Z記法、VMS、Event-B (B-Method)、Coq、
+
+プログラムの検証としてみる: 関数型
+状態遷移系の検証としてみる: 状態遷移系型
+時相論理。
+
+\subsection{$\textrm{TLA}^{+}$}
+
+\section{安全性の形式検証}
+何を検証するか書く。
+
+\subsection{表と図}
+
+表の例を表\ref{tab:example}に，
+図の例を図\ref{fig:example}に示します．
+
+\begin{table}[htbp]
+  \centering
+  \caption{表の例} \label{tab:example}
+  \begin{tabular}{|l|l|l|}\hline
+    FOSE2013 & ソフトウェア工学の基礎 XX & 岡野 浩三，関澤 俊弦 編 \\ \hline
+    FOSE2014 & ソフトウェア工学の基礎 XXI& 花川 典子，尾花 将輝 編\\ \hline
+    FOSE2015 & ソフトウェア工学の基礎XXII & 青木 利晃，豊島 真澄 編\\ \hline
+    FOSE2016 & ソフトウェア工学の基礎XXIII & 阿萬 裕久，横川 智教 編\\ \hline
+    FOSE2017 & ソフトウェア工学の基礎XXIV & 吉田 敦，福安 直樹 編\\ \hline
+    FOSE2018 & ソフトウェア工学の基礎XXV & 伊藤 恵，神谷 年洋  編\\ \hline
+  \end{tabular}
+\end{table}
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=\textwidth]{fose2005logo.eps}
+%  \epsfig{file=fose2005logo.eps,width=\textwidth}
+  \caption{図の例(FOSE2005のロゴを使わせてもらっております)}
+  \label{fig:example}
+\end{figure}
+
+
+
+\acknowledgements{test}
+本フォーマットを作成して頂いた方々に感謝します.
+%また, \LaTeX2e 用のフォーマットを作成して頂ける方がいらっしゃいましたら，プログラム委員長までご連絡ください.
+
+%\bibliography{own,related,misc}
+\bibliographystyle{junsrt}
+
+\begin{thebibliography}{9}
+% \bibitem{fose2001} 杉山 安洋, 藤田 ハミド 編: ソフトウェア工学の基礎VIII,
+%         日本ソフトウェア科学会{\em FOSE2001}, 近代科学社, 2001.
+% \bibitem{fose2002} 井上 克郎 編: ソフトウェア工学の基礎IX,
+%         日本ソフトウェア科学会{\em FOSE2002}, 近代科学社, 2002.
+% \bibitem{fose2003} 鰺坂 恒夫, 満田 成紀 編:ソフトウェア工学の基礎X,
+%         日本ソフトウェア科学会{\em FOSE2003}, 近代科学社, 2003.
+% \bibitem{fose2004}野呂 昌満,  山本 晋一郎 編:ソフトウェア工学の基礎XI,
+%         日本ソフトウェア科学会{\em FOSE2004}, 近代科学社, 2004.
+% \bibitem{fose2005}権藤 克彦,  小林 隆志 編:ソフトウェア工学の基礎XII,
+%         日本ソフトウェア科学会{\em FOSE2005}, 近代科学社, 2005.
+% \bibitem{fose2006}沢田 篤史,  丸山 勝久 編:ソフトウェア工学の基礎XIII,
+%         日本ソフトウェア科学会{\em FOSE2006}, 近代科学社, 2006.
+% \bibitem{fose2007}岸 知二，野田 夏子 編:ソフトウェア工学の基礎XIV,
+%         日本ソフトウェア科学会{\em FOSE2007}, 近代科学社, 2007.
+% \bibitem{fose2008}松下 誠，川口 真司 編:ソフトウェア工学の基礎XV,
+%         日本ソフトウェア科学会{\em FOSE2008}, 近代科学社, 2008.
+% \bibitem{fose2009} 第16回ソフトウェア工学の基礎ワークショップ,
+%         {\em http://www.washi.cs.waseda.ac.jp/fose2009/}, 2009.
+% \bibitem{fose2010}高田 眞吾，福田 浩章 編:ソフトウェア工学の基礎XVII,
+%         日本ソフトウェア科学会{\em FOSE2010}, 近代科学社, 2010.
+% \bibitem{fose2011}門田 暁人，上野 秀剛 編:ソフトウェア工学の基礎XVIII,
+%         日本ソフトウェア科学会{\em FOSE2011}, 近代科学社, 2011.
+ \bibitem{fose2012}鵜林 尚靖，亀井 靖高 編:ソフトウェア工学の基礎XIX,
+         日本ソフトウェア科学会{\em FOSE2012}, 近代科学社, 2012.
+ \bibitem{fose2013}岡野 浩三，関澤 俊弦 編:ソフトウェア工学の基礎XX,
+         日本ソフトウェア科学会{\em FOSE2013}, 近代科学社, 2013.
+ \bibitem{fose2014}花川 典子，尾花 将輝 編:ソフトウェア工学の基礎XXI,
+         日本ソフトウェア科学会{\em FOSE2014}, 近代科学社, 2014.
+ \bibitem{fose2015} 青木 利晃，豊島 真澄 編:ソフトウェア工学の基礎XXII,
+         日本ソフトウェア科学会{\em FOSE2015}, 近代科学社, 2015.
+ \bibitem{fose2016} 阿萬 裕久，横川 智教 編：ソフトウェア工学の基礎XXIII,
+	 日本ソフトウェア科学会{\em FOSE2016}, 近代科学社, 2016.
+\bibitem{fose2017} 吉田 敦，福安 直樹 編：ソフトウェア工学の基礎XXIV,
+	 日本ソフトウェア科学会{\em FOSE2017}, 近代科学社, 2017.
+\bibitem{fose2018} 伊藤 恵，神谷 年洋 編：ソフトウェア工学の基礎XXV,
+	 日本ソフトウェア科学会{\em FOSE2019}, 近代科学社, 2018. 
+\bibitem{fose2019} 伊藤 恵，神谷 年洋 編：ソフトウェア工学の基礎XXVI,
+	 日本ソフトウェア科学会{\em FOSE2019}, 近代科学社, 2019. （to appear）
+\end{thebibliography}
+\end{document}
