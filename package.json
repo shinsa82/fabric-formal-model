@@ -1,0 +1,23 @@
+{
+  "name": "fabric-formal-model",
+  "version": "1.0.0",
+  "description": "Formal model of Hyperledger Fabric using TLA+.",
+  "main": "index.js",
+  "scripts": {
+    "watch": "chokidar \"fabric-model/*.puml\" -c \"java -jar lib/plantuml.jar -tpng fabric-model/*.puml -o images\"",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.ibm.com:SHINSA/fabric-formal-model.git"
+  },
+  "keywords": [
+    "TLA+",
+    "formal verification"
+  ],
+  "author": "Shin Saito <shinsa@jp.ibm.com>",
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "chokidar-cli": "^1.2.2"
+  }
+}
