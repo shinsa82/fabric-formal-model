@@ -18,6 +18,7 @@ NULL == CHOOSE x : x \notin BOOLEAN
 VARIABLES state,    \* current state of the ledger state machine.
           chain,    \* blockchain, a list of received transactions. 
           index     \* index of the blockchain.
+vars == <<state, chain, index>>
 
 (******************************************************************************)
 (* Datatype definition                                                        *)
@@ -39,7 +40,7 @@ TX == [f: Operation] \* a transaction. note that "f" is just a label
 (******************************************************************************)
 ChainEntry == [tx: TX, is_valid: BOOLEAN \union {NULL}] 
 Chain == Seq(ChainEntry)
-TypeInvariant ==
+TypeInv ==
     /\ state \in State
     /\ index \in Nat
     /\ index > 0
@@ -73,6 +74,7 @@ ProcessTX_OK ==
     LET
         f == chain[index].tx.f
     IN
+        /\ Len(chain) >= index
         /\ chain' = [chain EXCEPT ![index].is_valid = TRUE]  \* update validity flag
         /\ index' = index + 1   \* increment the index.
         /\ state' \in f[state]  \* perform non-deterministic state transition by f.
@@ -81,21 +83,17 @@ ProcessTX_ERR ==
     LET
         f == chain[index].tx.f
     IN
+        /\ Len(chain) >= index
         /\ chain' = [chain EXCEPT ![index].is_valid = FALSE]  \* see above.
         /\ index' = index + 1  \* see above.
         /\ UNCHANGED state     \* state does not change due to invalid TX.
 
-ProcessTX ==
-    /\ Len(chain) >= index 
-    /\ \/ ProcessTX_OK
-       \/ ProcessTX_ERR
-
-Next == (\E tx \in TX: SubmitTX(tx)) \/ ProcessTX
+Next == (\E tx \in TX: SubmitTX(tx)) \/ ProcessTX_OK \/ ProcessTX_ERR
 
 (******************************************************************************)
 (* Specification                                                              *)
 (******************************************************************************)    
-Spec == Init /\ [][Next]_<<state, index, chain>>
+Spec == Init /\ [][Next]_vars
 
 ----
 (******************************************************************************)
@@ -104,12 +102,39 @@ Spec == Init /\ [][Next]_<<state, index, chain>>
 Finality == TRUE \* TODO
 Safety == Finality
 
-Invariant ==
-    /\ TypeInvariant
-    /\ Len(chain) > 0 => \E idx \in 1..Len(chain)+1: 
-        /\ \A j \in 1..idx-1: chain[j].processed = TRUE
-        /\ \A k \in idx..Len(chain): chain[k].processed = FALSE
-    
+\* Invariant (safety) on teh blockchain
+ChainInv == TRUE
+\*    /\ Len(chain) > 0 => \E idx \in 1..Len(chain)+1: 
+\*        /\ \A j \in 1..idx-1: chain[j].processed = TRUE
+\*        /\ \A k \in idx..Len(chain): chain[k].processed = FALSE
+
+Inv == TypeInv /\ ChainInv
+
+THEOREM LedgerInv == Spec => []Inv
+PROOF
+    <1>1 Init => Inv
+        BY InitStateAxiom DEF Init, Inv, TypeInv, ChainInv, Chain
+    <1>2 Inv /\ [Next]_vars => Inv'
+        <2>1 SUFFICES ASSUME TypeInv, ChainInv, [Next]_vars PROVE Inv' BY DEF Inv
+        <2>2 CASE Next
+            <3> USE DEF Inv, Next
+            <3>0 ChainInv' BY DEF ChainInv
+            <3>1 TypeInv'
+                <4> USE DEF TypeInv, Chain, ChainEntry
+                <4>1 CASE (\E tx \in TX: SubmitTX(tx))
+                    BY <2>1, <2>2, <4>1 DEF SubmitTX
+                <4>2 CASE ProcessTX_OK
+                    BY ONLY <2>1, <2>2, <4>2 DEF ProcessTX_OK, TX, Operation, TotalFunc   
+                <4>3 CASE ProcessTX_ERR 
+                    BY <2>1, <2>2, <4>3 DEF ProcessTX_ERR
+                <4> QED BY <2>1, <2>2, <4>1, <4>2, <4>3
+            <3> QED BY <2>1, <2>2, <3>0, <3>1
+        <2>3 CASE UNCHANGED vars
+            BY <2>1, <2>3 DEF Inv, TypeInv, ChainInv, vars
+        <2> QED BY <2>1, <2>2, <2>3
+    <1> QED BY PTL, <1>1, <1>2 DEF Spec
+
+(*    
 THEOREM TypeSafety == Spec => []TypeInvariant
     <1>1 Init => TypeInvariant
         BY InitStateAxiom DEF Init, TypeInvariant, Chain
@@ -154,7 +179,8 @@ THEOREM TypeSafety == Spec => []TypeInvariant
                 BY <2>3 DEF TypeInvariant
         <2> QED BY <2>2, <2>3
     <1> QED BY PTL, <1>1, <1>2 DEF Spec
+*)    
 ================================================================================
 \* Modification History
-\* Last modified Fri Jul 05 19:02:03 JST 2019 by shinsa
+\* Last modified Sat Jul 06 12:13:16 JST 2019 by shinsa
 \* Created Fri Jun 07 01:51:28 JST 2019 by shinsa

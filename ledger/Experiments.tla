@@ -13,15 +13,19 @@ CONSTANT State
 Operation == [State -> (SUBSET State) \ {{}}]
 TX == [f: Operation]
     
+\* Universal quant. 1    
 LEMMA \A tx \in TX: tx.f \in Operation
     BY DEF TX
-    
+
+\* Universal quant. 2    
 LEMMA \A f \in Operation, s \in State: f[s] /= {}
     BY DEF Operation
 
+\* Top level LET
 LEMMA LET a == 3 IN a + 1 = 4 /\ a - 1 = 2
     OBVIOUS    
 
+\* Inner level LET
 LEMMA
     /\ 3 + 1 = 4
     /\ (LET
@@ -30,6 +34,14 @@ LEMMA
             a - 1 = 2)
     OBVIOUS    
 
+----
+\* Label in a datatype
+RecordList == Seq(record::Nat) 
+
+\* Caution, this make TLAPS crash
+LEMMA <<3>> \in RecordList
+    OBVIOUS
+    
 ----
 (******************************************************************************)
 (* The proof by contradiction and the excluded middle                         *)
@@ -92,8 +104,6 @@ Next == v' = v + 2
 Spec == Init /\ [][Next]_v 
 Inv == v > 0
 
-INSTANCE Util WITH vars <- <<v>>, Next <- Next, Invariant <- Inv 
-
 THEOREM Spec => []Inv
 PROOF
     <1>1 ASSUME Init PROVE Inv
@@ -105,5 +115,5 @@ PROOF
     <1> QED BY InvMeta2, <1>1, <1>2, <1>3 DEF Spec
 ================================================================================
 \* Modification History
-\* Last modified Fri Jul 05 13:33:35 JST 2019 by shinsa
+\* Last modified Sat Jul 06 00:17:49 JST 2019 by shinsa
 \* Created Thu Jul 04 16:52:28 JST 2019 by shinsa
