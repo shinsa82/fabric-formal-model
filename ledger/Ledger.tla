@@ -74,7 +74,8 @@ ProcessTX_OK ==
     LET
         f == chain[index].tx.f
     IN
-        /\ Len(chain) >= index
+        \* /\ Len(chain) >= index
+        /\ index \in DOMAIN chain
         /\ chain' = [chain EXCEPT ![index].is_valid = TRUE]  \* update validity flag
         /\ index' = index + 1   \* increment the index.
         /\ state' \in f[state]  \* perform non-deterministic state transition by f.
@@ -83,7 +84,8 @@ ProcessTX_ERR ==
     LET
         f == chain[index].tx.f
     IN
-        /\ Len(chain) >= index
+        \* /\ Len(chain) >= index
+        /\ index \in DOMAIN chain
         /\ chain' = [chain EXCEPT ![index].is_valid = FALSE]  \* see above.
         /\ index' = index + 1  \* see above.
         /\ UNCHANGED state     \* state does not change due to invalid TX.
@@ -102,11 +104,11 @@ Spec == Init /\ [][Next]_vars
 Finality == TRUE \* TODO
 Safety == Finality
 
-\* Invariant (safety) on teh blockchain
-ChainInv == TRUE
-\*    /\ Len(chain) > 0 => \E idx \in 1..Len(chain)+1: 
-\*        /\ \A j \in 1..idx-1: chain[j].processed = TRUE
-\*        /\ \A k \in idx..Len(chain): chain[k].processed = FALSE
+\* Invariant (safety) on the blockchain
+ChainInv ==
+    \* chain = (processed part) + (unprocessed part) 
+    /\ \A i \in 1 .. index-1: chain[i].is_valid \in BOOLEAN
+    /\ \A i \in {i \in Nat: index <= i} \cap DOMAIN chain: chain[i].is_valid = NULL
 
 Inv == TypeInv /\ ChainInv
 
@@ -118,69 +120,46 @@ PROOF
         <2>1 SUFFICES ASSUME TypeInv, ChainInv, [Next]_vars PROVE Inv' BY DEF Inv
         <2>2 CASE Next
             <3> USE DEF Inv, Next
-            <3>0 ChainInv' BY DEF ChainInv
-            <3>1 TypeInv'
-                <4> USE DEF TypeInv, Chain, ChainEntry
-                <4>1 CASE (\E tx \in TX: SubmitTX(tx))
-                    BY <2>1, <2>2, <4>1 DEF SubmitTX
-                <4>2 CASE ProcessTX_OK
-                    BY ONLY <2>1, <2>2, <4>2 DEF ProcessTX_OK, TX, Operation, TotalFunc   
-                <4>3 CASE ProcessTX_ERR 
-                    BY <2>1, <2>2, <4>3 DEF ProcessTX_ERR
-                <4> QED BY <2>1, <2>2, <4>1, <4>2, <4>3
-            <3> QED BY <2>1, <2>2, <3>0, <3>1
+            <3> USE DEF TypeInv, ChainInv, Chain, ChainEntry
+            <3>1 CASE (\E tx \in TX: SubmitTX(tx))
+                <4> USE DEF SubmitTX
+                <4>a \A i \in DOMAIN chain: chain[i] = chain'[i] BY <3>1 
+                <4>1 TypeInv' BY <2>1, <3>1
+                <4>2 ChainInv'
+                    <5>1 ChainInv!1' OBVIOUS
+                    <5>2 ChainInv!2' 
+                        <6>a DOMAIN chain' = DOMAIN chain \union { Len(chain)+1 } BY TypeInv, <3>1
+                        <6>1 PICK tx \in TX: SubmitTX(tx) BY <3>1
+                        <6>2 TAKE i \in ({i \in Nat: index <= i} \cap DOMAIN chain)'
+                        <6>3 CASE i \in ({j \in Nat: index <= j} \cap { Len(chain)+1 }) BY <2>1, <4>a, <6>1, <6>3
+                        <6>4 CASE i \in ({j \in Nat: index <= j} \cap DOMAIN chain) BY <2>1, <4>a, <6>1, <6>4
+                        <6> QED BY <2>1, <6>a, <6>1, <6>2, <6>3, <6>4 
+                    <5> QED BY <5>1, <5>2
+                <4> QED BY <4>1, <4>2
+            <3>2 CASE ProcessTX_OK
+                <4> USE DEF ProcessTX_OK
+                <4>1 TypeInv' BY <2>1, <3>2 DEF TX, Operation, TotalFunc
+                <4>2 ChainInv'
+                    <5> ChainInv!1' OBVIOUS
+                    <5> ChainInv!2' BY <2>1, <3>2
+                    <5> QED OBVIOUS
+                <4> QED BY <4>1, <4>2
+            <3>3 CASE ProcessTX_ERR
+                <4> USE DEF ProcessTX_ERR
+                <4>1 TypeInv' BY <2>1, <2>2, <3>3 DEF TX, Operation, TotalFunc
+                <4>2 ChainInv'
+                    <5> ChainInv!1' OBVIOUS
+                    <5> ChainInv!2' BY <2>1, <3>3
+                    <5> QED OBVIOUS
+                <4> QED BY <4>1, <4>2
+            <3> QED
+                BY <2>1, <2>2, <3>1, <3>2, <3>3
         <2>3 CASE UNCHANGED vars
             BY <2>1, <2>3 DEF Inv, TypeInv, ChainInv, vars
         <2> QED BY <2>1, <2>2, <2>3
     <1> QED BY PTL, <1>1, <1>2 DEF Spec
-
-(*    
-THEOREM TypeSafety == Spec => []TypeInvariant
-    <1>1 Init => TypeInvariant
-        BY InitStateAxiom DEF Init, TypeInvariant, Chain
-    <1>2 TypeInvariant /\ [Next]_<<state, index, chain>> => TypeInvariant'
-        <2> SUFFICES ASSUME TypeInvariant,  [Next]_<<state, index, chain>> PROVE TypeInvariant'
-            OBVIOUS
-        <2>2. CASE Next
-            <3> SUFFICES ASSUME TypeInvariant, Next PROVE TypeInvariant'
-                BY <2>2
-            <3>2. QED
-                <4>1. CASE (\E tx \in TX: SubmitTX(tx))
-                    <5>1. SUFFICES ASSUME TypeInvariant, (\E tx \in TX: SubmitTX(tx)) PROVE TypeInvariant'
-                        BY <4>1
-                    <5> QED
-                        BY ONLY <5>1 DEF SubmitTX, TypeInvariant, Chain, ChainEntry
-                <4>2. CASE ProcessTX
-                    <5> USE DEF TypeInvariant, ProcessTX
-                    <5>1. SUFFICES ASSUME TypeInvariant, Len(chain) >= index, ProcessTX_OK \/ ProcessTX_ERR PROVE TypeInvariant'
-                        BY <4>2
-                    <5>2. ASSUME TypeInvariant, Len(chain) >= index, ProcessTX_OK PROVE TypeInvariant'
-                        <6> USE DEF ProcessTX_OK, Chain, ChainEntry
-                        <6>0. state' \in State
-                            BY <5>2, chain[index] \in ChainEntry, chain[index].tx \in TX DEF TX, Operation, TotalFunc
-                        <6>1. index' \in Nat
-                            BY <5>2
-                        <6>2. index' > 0
-                            BY <5>2
-                        <6>3. chain' \in Chain
-                            BY <5>2
-                        <6> QED
-                            BY <6>0, <6>1, <6>2, <6>3
-                    <5>3. ASSUME TypeInvariant, Len(chain) >= index, ProcessTX_ERR PROVE TypeInvariant'
-                        BY <5>3 DEF ProcessTX_ERR, Chain, ChainEntry
-                    <5> QED
-                        BY ONLY <5>1, <5>2, <5>3 DEF ProcessTX, TypeInvariant
-                <4> QED
-                    BY <4>1, <4>2 DEF Next, TypeInvariant
-        <2>3 CASE UNCHANGED <<state, index, chain>>
-            <3>1. SUFFICES ASSUME TypeInvariant, UNCHANGED <<state, index, chain>> PROVE TypeInvariant'
-                BY <2>3
-            <3>2. QED
-                BY <2>3 DEF TypeInvariant
-        <2> QED BY <2>2, <2>3
-    <1> QED BY PTL, <1>1, <1>2 DEF Spec
-*)    
+  
 ================================================================================
 \* Modification History
-\* Last modified Sat Jul 06 12:13:16 JST 2019 by shinsa
+\* Last modified Wed Jul 10 01:23:37 JST 2019 by shinsa
 \* Created Fri Jun 07 01:51:28 JST 2019 by shinsa

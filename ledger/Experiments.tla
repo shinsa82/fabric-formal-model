@@ -1,14 +1,17 @@
 ------------------------------ MODULE Experiments ------------------------------
 EXTENDS Sequences, Naturals, TLAPS
 
-list == <<1,2,3>>
+\* list == <<1,2,3>>
 
 (******************************************************************************)
 (* Sequence index starts from 1                                               *)
 (******************************************************************************)
-THEOREM list[1] = 1
-    BY DEF list
+LEMMA LET list == <<1,2,3>> IN list[1] = 1
+    OBVIOUS
 
+LEMMA 3..2 = {}
+    OBVIOUS
+    
 CONSTANT State
 Operation == [State -> (SUBSET State) \ {{}}]
 TX == [f: Operation]
@@ -35,12 +38,39 @@ LEMMA
     OBVIOUS    
 
 ----
+(* A proof that involves inequality *)
+
+ChainEntry == [is_valid: BOOLEAN]
+Chain == Seq(ChainEntry)
+
+LEMMA \A s \in Chain, idx \in Nat: 0 < idx /\ idx <= Len(s) => idx \in DOMAIN s
+    BY DEF Chain
+     
+LEMMA \A ch, ch2 \in Chain: Len(ch) > 0 /\ ch2 = [ch EXCEPT ![1].is_valid = TRUE] => ch2[1].is_valid = TRUE
+    <1>1 TAKE ch, ch2 \in Chain 
+    <1> SUFFICES ASSUME Len(ch) > 0, ch2 = [ch EXCEPT ![1].is_valid = TRUE] PROVE ch2[1].is_valid = TRUE BY <1>1
+    <1> QED BY 1 \in DOMAIN ch DEF Chain, ChainEntry
+
+LEMMA \A ch, ch2 \in Chain, i \in Nat: i > 0 /\ i <= Len(ch) /\ ch2 = [ch EXCEPT ![i].is_valid = TRUE] => ch2[i].is_valid = TRUE
+    <1>1 TAKE ch, ch2 \in Chain, i \in Nat 
+    <1> SUFFICES ASSUME i > 0, i <= Len(ch), ch2 = [ch EXCEPT ![i].is_valid = TRUE] PROVE ch2[i].is_valid = TRUE BY <1>1
+    <1> QED BY i \in DOMAIN ch DEF Chain, ChainEntry
+
+LEMMA \A ch, ch2 \in Chain, i \in Nat: i > 0 /\ i <= Len(ch) /\ ch2 = [ch EXCEPT ![i]["is_valid"] = TRUE] => ch2[i]["is_valid"] = TRUE
+    <1>1 TAKE ch, ch2 \in Chain, i \in Nat 
+    <1> SUFFICES ASSUME i > 0, i <= Len(ch), ch2 = [ch EXCEPT ![i].is_valid = TRUE] PROVE ch2[i].is_valid = TRUE BY <1>1
+    <1> QED BY i \in DOMAIN ch DEF Chain, ChainEntry
+
+----
+
+(*
 \* Label in a datatype
 RecordList == Seq(record::Nat) 
 
 \* Caution, this make TLAPS crash
 LEMMA <<3>> \in RecordList
     OBVIOUS
+*)
     
 ----
 (******************************************************************************)
@@ -54,6 +84,9 @@ THEOREM ASSUME NEW P
         PROVE P \/ ~P
     OBVIOUS
 
+----
+(* An inner module: all line including blank lines should be correctly indented *)
+
     ----- MODULE Inner -----
     EXTENDS Naturals
     
@@ -62,10 +95,11 @@ THEOREM ASSUME NEW P
         OMITTED
     ========
 
-(******************************************************************************)
-(* Meta theorem for proving an invariant                                      *)
-(******************************************************************************)
 ----
+(******************************************************************************)
+(* Meta theorem for proving an invariant (failed)                             *)
+(******************************************************************************)
+
 THEOREM InvMeta == 
     ASSUME
         NEW Init, ACTION Next, NEW vars, NEW Invariant,
@@ -115,5 +149,5 @@ PROOF
     <1> QED BY InvMeta2, <1>1, <1>2, <1>3 DEF Spec
 ================================================================================
 \* Modification History
-\* Last modified Sat Jul 06 00:17:49 JST 2019 by shinsa
+\* Last modified Mon Jul 08 18:49:53 JST 2019 by shinsa
 \* Created Thu Jul 04 16:52:28 JST 2019 by shinsa
