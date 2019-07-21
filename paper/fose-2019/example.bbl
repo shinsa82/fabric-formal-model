@@ -1,0 +1,27 @@
+\begin{thebibliography}{1}
+
+\bibitem{nakamoto:bitcoin}
+Satoshi Nakamoto.
+\newblock Bitcoin: A peer-to-peer electronic cash system.
+\newblock \url{http://bitcoin.org/bitcoin.pdf}, 2008.
+
+\bibitem{ethereum}
+{Ethereum Project}.
+\newblock \url{https://www.ethereum.org/}.
+
+\bibitem{dao:codetour}
+{Deconstructing theDAO Attack: A Brief Code Tour}.
+\newblock
+  \url{http://vessenes.com/deconstructing-thedao-attack-a-brief-code-tour}.
+
+\bibitem{Castro:PBFT:1999}
+Miguel Castro and Barbara Liskov.
+\newblock Practical byzantine fault tolerance.
+\newblock In {\em Proceedings of the Third Symposium on Operating Systems
+  Design and Implementation}, OSDI '99, pp. 173--186, 1999.
+
+\bibitem{fabric}
+Hyperledger fabric -- hyperledger.
+\newblock \url{https://hyperledger.org/projects/fabric}.
+
+\end{thebibliography}
