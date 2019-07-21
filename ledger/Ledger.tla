@@ -1,40 +1,18 @@
 -------------------------------- MODULE Ledger --------------------------------
 (******************************************************************************)
-(* High level specification of DLT Ledger,                                     *)
-(* expressed as a single state machine without MVCC validation                                      *)
+(* High level specification of DLT Ledger,                                    *)
+(* expressed as a single state machine without MVCC validation                *)
 (******************************************************************************)
-EXTENDS Sequences, Integers, TLAPS
-
-(******************************************************************************)
-(* Constants                                                                  *)
-(******************************************************************************)
-CONSTANTS State, InitState \* a set of states, and 
-ASSUME InitStateAxiom == InitState \in State \* the designated initial state.
-NULL == CHOOSE x : x \notin BOOLEAN 
+EXTENDS Sequences, Integers, TLAPS, Datatype
 
 (******************************************************************************)
 (* State variables of this module                                             *)
 (******************************************************************************)
 VARIABLES state,    \* current state of the ledger state machine.
           chain,    \* blockchain, a list of received transactions. 
-          index     \* index of the blockchain.
+          index     \* unprocessed TX index at the blockchain.
 vars == <<state, chain, index>>
 
-(******************************************************************************)
-(* Datatype definition                                                        *)
-(******************************************************************************)
-
-TotalFunc(S1, S2) == [ S1 -> S2 \ {{}} ]\* a set of total function from S1 to S2 
-
-(******************************************************************************)
-(* Operation is a function from a state to a state, can be non-deterministic, *)
-(* but required to be total.                                                  *)
-(******************************************************************************)   
-Operation == TotalFunc(State, SUBSET State)
-\*Operation == [State -> (SUBSET State) \ {{}}]
-
-TX == [f: Operation] \* a transaction. note that "f" is just a label
- 
 (******************************************************************************)
 (*  Type invariant                                                            *)
 (******************************************************************************)
@@ -44,7 +22,8 @@ TypeInv ==
     /\ state \in State
     /\ index \in Nat
     /\ index > 0
-    \* Each TX in the blockchain has a flag if it's valid or not. Before the TX is processed, its value is NULL.
+    \* Each TX in the blockchain has a flag if it's valid or not. Before the TX
+    \* is processed, its value is NULL.
     /\ chain \in Chain
 ----
 (******************************************************************************)
@@ -61,14 +40,16 @@ Init ==
 (******************************************************************************)
 
 (******************************************************************************)
-(* SubmitTX: A client appends a transaction to the transaction queue.                            *)
+(* SubmitTX: Client appends a transaction to the transaction queue.           *)
 (******************************************************************************)
 SubmitTX(tx) ==
     /\ chain' = Append(chain, [tx |-> tx, is_valid |-> NULL])
     /\ UNCHANGED <<state, index>> 
 
+
 (******************************************************************************)
-(* CommitTx: Ledger processes the oldest unprocessed TX and                   *)
+(* ProcessTx: Ledger processes the oldest unprocessed TX and updates its      *)
+(* state by applyinng f                                                       *)
 (******************************************************************************)
 ProcessTX_OK ==
     LET
@@ -112,6 +93,7 @@ ChainInv ==
 
 Inv == TypeInv /\ ChainInv
 
+(* Invariant (safety) on the high-level Ledger *) 
 THEOREM LedgerInv == Spec => []Inv
 PROOF
     <1>1 Init => Inv
@@ -161,5 +143,5 @@ PROOF
   
 ================================================================================
 \* Modification History
-\* Last modified Wed Jul 10 01:23:37 JST 2019 by shinsa
+\* Last modified Fri Jul 19 17:59:56 JST 2019 by shinsa
 \* Created Fri Jun 07 01:51:28 JST 2019 by shinsa

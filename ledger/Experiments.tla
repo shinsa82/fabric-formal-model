@@ -96,6 +96,18 @@ THEOREM ASSUME NEW P
     ========
 
 ----
+THEOREM Existential == \E y: [](3 = y + 1)
+    <1> WITNESS 2
+    <1> QED OBVIOUS
+
+(* provability of temporal quantification *)
+VARIABLE y0
+THEOREM Hiding == [](y0 = 2) => \EE y: [](3 = y + 1)
+    <1> WITNESS y0 
+    <1> QED OBVIOUS
+
+----
+
 (******************************************************************************)
 (* Meta theorem for proving an invariant (failed)                             *)
 (******************************************************************************)
@@ -149,5 +161,5 @@ PROOF
     <1> QED BY InvMeta2, <1>1, <1>2, <1>3 DEF Spec
 ================================================================================
 \* Modification History
-\* Last modified Mon Jul 08 18:49:53 JST 2019 by shinsa
+\* Last modified Fri Jul 19 04:19:43 JST 2019 by shinsa
 \* Created Thu Jul 04 16:52:28 JST 2019 by shinsa
