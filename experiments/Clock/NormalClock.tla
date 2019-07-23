@@ -4,12 +4,13 @@
 EXTENDS Naturals
 VARIABLES hr
 
-HCInit == hr \in 1..12
-HCNext == hr' = IF hr /= 12 THEN hr+1 ELSE 1
+Init == hr \in 1..12
+Next == hr' = IF hr /= 12 THEN hr+1 ELSE 1
 
-HC == HCInit /\ [][HCNext]_hr
+Spec == Init /\ [][Next]_hr
 
+THEOREM TypeSafety == Spec => []Init 
 ================================================================================
 \* Modification History
-\* Last modified Tue Jul 02 18:49:12 JST 2019 by shinsa
+\* Last modified Mon Jul 22 13:54:24 JST 2019 by shinsa
 \* Created Tue Jul 02 16:35:44 JST 2019 by shinsa
