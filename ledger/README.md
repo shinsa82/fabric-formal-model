@@ -35,7 +35,7 @@ Mac の場合、ファイルの先頭で `コマンド-g コマンド-g` をタ�
 
 - [Ledger.tla](Ledger.tla) では下部の `THEOREM` で type invariant とブロックチェーンに関する不変条件 `ChainInv` が証明されている
 
-## インストール & 証明チェック方法 (Standalone tools での方法)
+## インポート & 証明チェック方法 (Standalone tools での方法)
 
 調査中
 
