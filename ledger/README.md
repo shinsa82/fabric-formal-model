@@ -4,7 +4,7 @@ Core part of the Fabric ledger spec.
 
 ## Status
 
-- **作業中** v0.3: [MVCC_Ledger.tla](MVCC_Ledger.tla) のモデル化と refinement の証明
+- **作業中** v0.3: 証明の省略した部分の完成
 - v0.2: [Ledger.tla](Ledger.tla) で type 以外の invariant を証明
 - v0.1: [Ledger.tla](Ledger.tla) で純粋な type invariant を証明
 
