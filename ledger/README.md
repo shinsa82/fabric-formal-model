@@ -10,32 +10,36 @@ Core part of the Fabric ledger spec.
 
 ## Files
 
-Read "モデリングの方針" for details.
+Read "モデリングの方針" for details. 上のものほど抽象度が高い。
 
 - [Ledger.tla](Ledger.tla): Ledger のハイレベル仕様
 - [MVCC_Ledger.tla](MVCC_Ledger.tla): Ledger の MVCC 仕様
+- [MVCC_Consensus_Ledger.tla](MVCC_Consensus_Ledger.tla): Ledger の複数ノード MVCC 仕様
 
-## TLA+ Toolbox でのインストール方法
+## インポート & 証明チェック方法 (TLA+ Toolbox での方法)
 
-プロジェクトのインポート機能がないようなのでこうする:
+### プロジェクトのインポート
+
+プロジェクト (`Specification`) のインポート機能がないようなのでこうする:
 
 - 新規 `Specification` を作成する
--  Ledger.tla をルートファイルをして指定する
-- `Module` を追加するメニューを選び、[MVCC_Ledger.tla](MVCC_Ledger.tla) を指定する
+-  [Ledger.tla](Ledger.tla) をルートファイルをして指定する
+- `Module` を追加するメニューを選び、[MVCC_Ledger.tla](MVCC_Ledger.tla) と [MVCC_Consensus_Ledger.tla](MVCC_Consensus_Ledger.tla) を指定する
 
-TLAPS を使って証明するだけであれば、どれをルートファイルにしてもあまり関係ない
+UI上、新規ファイルを作るような雰囲気で進むが、既存のファイルを指定すればそのようになるので問題ない。
+また、TLAPS を使って証明するだけであれば、どれをルートファイルにしてもあまり関係ない
 
-### 証明の確認方法
+### 証明のチェック方法
 
-Mac の場合、ファイルの戦闘で `コマンド-g コマンド-g` で行える。
+Mac の場合、ファイルの先頭で `コマンド-g コマンド-g` をタイプすると証明が確認される。全部緑になればOK
 
-- [Ledger.tla](Ledger.tla) では下部の `THEOREM` で type invariant が証明されている
+- [Ledger.tla](Ledger.tla) では下部の `THEOREM` で type invariant とブロックチェーンに関する不変条件 `ChainInv` が証明されている
 
-### TODO
+## インストール & 証明チェック方法 (Standalone tools での方法)
 
-Fabric のコンセンサス実装の safety である。
-Safety を TLA+ の reinement により証明する
+調査中
 
+----
 
 ## 用語
 
