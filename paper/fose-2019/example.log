@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.14159265-p3.8.1-180226-2.6 (utf8.euc) (TeX Live 2018) (preloaded format=platex 2018.10.3)  22 JUL 2019 05:09
+This is e-pTeX, Version 3.14159265-p3.8.1-180226-2.6 (utf8.euc) (TeX Live 2018) (preloaded format=platex 2018.10.3)  22 JUL 2019 16:41
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -452,297 +452,371 @@ LaTeX Info: Redefining \not on input line 2322.
 \CommentStream=\write3
 
 Excluding comment 'comment')
+(/usr/local/texlive/2018/texmf-dist/tex/latex/listings/listings.sty
+\lst@mode=\count118
+\lst@gtempboxa=\box48
+\lst@token=\toks23
+\lst@length=\count119
+\lst@currlwidth=\dimen136
+\lst@column=\count120
+\lst@pos=\count121
+\lst@lostspace=\dimen137
+\lst@width=\dimen138
+\lst@newlines=\count122
+\lst@lineno=\count123
+\abovecaptionskip=\skip50
+\belowcaptionskip=\skip51
+\lst@maxwidth=\dimen139
+
+(/usr/local/texlive/2018/texmf-dist/tex/latex/listings/lstmisc.sty
+File: lstmisc.sty 2018/09/02 1.7 (Carsten Heinz)
+\c@lstnumber=\count124
+\lst@skipnumbers=\count125
+\lst@framebox=\box49
+)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/listings/listings.cfg
+File: listings.cfg 2018/09/02 1.7 listings configuration
+))
+Package: listings 2018/09/02 1.7 (Carsten Heinz)
+
 (/usr/local/texlive/2018/texmf-dist/tex/latex/url/url.sty
 \Urlmuskip=\muskip11
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
-LaTeX Font Info:    Try loading font information for T1+ntxtlf on input line 27
+LaTeX Font Info:    Try loading font information for T1+ntxtlf on input line 29
 .
 
 (/usr/local/texlive/2018/texmf-dist/tex/latex/newtx/t1ntxtlf.fd
 File: t1ntxtlf.fd 2015/01/17 v1.0 font definition file for T1/ntx/tlf
 )
 LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
-(Font)              scaled to size 10.95pt on input line 27.
+(Font)              scaled to size 10.95pt on input line 29.
  (./example.aux)
 \openout1 = `example.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/ntxmi/m/it on input line 27.
-LaTeX Font Info:    Try loading font information for OML+ntxmi on input line 27
+LaTeX Font Info:    Checking defaults for OML/ntxmi/m/it on input line 29.
+LaTeX Font Info:    Try loading font information for OML+ntxmi on input line 29
 .
  (/usr/local/texlive/2018/texmf-dist/tex/latex/newtx/omlntxmi.fd
 File: omlntxmi.fd 2015/08/25 Fontinst v1.933 font definitions for OML/ntxmi.
 )
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for U/ntxexa/m/n on input line 27.
-LaTeX Font Info:    Try loading font information for U+ntxexa on input line 27.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for U/ntxexa/m/n on input line 29.
+LaTeX Font Info:    Try loading font information for U+ntxexa on input line 29.
 
 
 (/usr/local/texlive/2018/texmf-dist/tex/latex/newtx/untxexa.fd
 File: untxexa.fd 2012/04/16 Fontinst v1.933 font definitions for U/ntxexa.
 )
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for JY1/mc/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for JT1/mc/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 27.
-LaTeX Font Info:    Try loading font information for TS1+cmr on input line 27.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for JY1/mc/m/n on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for JT1/mc/m/n on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 29.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 29.
 
 (/usr/local/texlive/2018/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for LMS/ntxsy/m/n on input line 27.
-LaTeX Font Info:    Try loading font information for LMS+ntxsy on input line 27
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for LMS/ntxsy/m/n on input line 29.
+LaTeX Font Info:    Try loading font information for LMS+ntxsy on input line 29
 .
 
 (/usr/local/texlive/2018/texmf-dist/tex/latex/newtx/lmsntxsy.fd
 File: lmsntxsy.fd 2016/07/02 Fontinst v1.933 font definitions for LMS/ntxsy.
 )
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for LMX/ntxexx/m/n on input line 27.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for LMX/ntxexx/m/n on input line 29.
 LaTeX Font Info:    Try loading font information for LMX+ntxexx on input line 2
-7.
+9.
 
 (/usr/local/texlive/2018/texmf-dist/tex/latex/newtx/lmxntxexx.fd
 File: lmxntxexx.fd 2016/07/03 Fontinst v1.933 font definitions for LMX/ntxexx.
 )
-LaTeX Font Info:    ... okay on input line 27.
+LaTeX Font Info:    ... okay on input line 29.
 
 (I search kanjifont definition file: . . )
-\c@mv@tabular=\count118
-\c@mv@boldtabular=\count119
+\c@mv@tabular=\count126
+\c@mv@boldtabular=\count127
+\c@lstlisting=\count128
 LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
-(Font)              scaled to size 17.28pt on input line 28.
+(Font)              scaled to size 17.28pt on input line 30.
 LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <17.28> not available
-(Font)              Font shape `JT1/gt/m/n' tried instead on input line 28.
+(Font)              Font shape `JT1/gt/m/n' tried instead on input line 30.
 LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <17.28> not available
-(Font)              Font shape `JY1/gt/m/n' tried instead on input line 28.
+(Font)              Font shape `JY1/gt/m/n' tried instead on input line 30.
 LaTeX Font Info:    Font shape `T1/ntxtlf/bx/n' in size <17.28> not available
-(Font)              Font shape `T1/ntxtlf/b/n' tried instead on input line 28.
+(Font)              Font shape `T1/ntxtlf/b/n' tried instead on input line 30.
 LaTeX Font Info:    Font shape `T1/ntxtlf/b/n' will be
-(Font)              scaled to size 17.28pt on input line 28.
+(Font)              scaled to size 17.28pt on input line 30.
 LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <10.95> not available
-(Font)              Font shape `JT1/gt/m/n' tried instead on input line 28.
+(Font)              Font shape `JT1/gt/m/n' tried instead on input line 30.
 LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <10.95> not available
-(Font)              Font shape `JY1/gt/m/n' tried instead on input line 28.
+(Font)              Font shape `JY1/gt/m/n' tried instead on input line 30.
 LaTeX Font Info:    Font shape `T1/ntxtlf/bx/n' in size <10.95> not available
-(Font)              Font shape `T1/ntxtlf/b/n' tried instead on input line 28.
+(Font)              Font shape `T1/ntxtlf/b/n' tried instead on input line 30.
 LaTeX Font Info:    Font shape `T1/ntxtlf/b/n' will be
-(Font)              scaled to size 10.95pt on input line 28.
+(Font)              scaled to size 10.95pt on input line 30.
 LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <14.4> not available
-(Font)              Font shape `JT1/gt/m/n' tried instead on input line 28.
+(Font)              Font shape `JT1/gt/m/n' tried instead on input line 30.
 LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <14.4> not available
-(Font)              Font shape `JY1/gt/m/n' tried instead on input line 28.
+(Font)              Font shape `JY1/gt/m/n' tried instead on input line 30.
 LaTeX Font Info:    Font shape `T1/ntxtlf/bx/n' in size <14.4> not available
-(Font)              Font shape `T1/ntxtlf/b/n' tried instead on input line 28.
+(Font)              Font shape `T1/ntxtlf/b/n' tried instead on input line 30.
 LaTeX Font Info:    Font shape `T1/ntxtlf/b/n' will be
-(Font)              scaled to size 14.4pt on input line 28.
+(Font)              scaled to size 14.4pt on input line 30.
 LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
-(Font)              scaled to size 14.4pt on input line 28.
-LaTeX Font Info:    Try loading font information for OT1+ntxtlf on input line 2
-8.
+(Font)              scaled to size 14.4pt on input line 30.
+LaTeX Font Info:    Try loading font information for OT1+ntxtlf on input line 3
+0.
 
 (/usr/local/texlive/2018/texmf-dist/tex/latex/newtx/ot1ntxtlf.fd
 File: ot1ntxtlf.fd 2015/01/17 v1.0 font definition file for OT1/ntx/tlf
 )
 LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
-(Font)              scaled to size 14.4pt on input line 28.
+(Font)              scaled to size 14.4pt on input line 30.
 LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
-(Font)              scaled to size 10.5pt on input line 28.
+(Font)              scaled to size 10.5pt on input line 30.
 LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
-(Font)              scaled to size 7.9pt on input line 28.
-LaTeX Font Info:    Try loading font information for U+ntxmia on input line 28.
+(Font)              scaled to size 7.9pt on input line 30.
+LaTeX Font Info:    Try loading font information for U+ntxmia on input line 30.
 
 
 (/usr/local/texlive/2018/texmf-dist/tex/latex/newtx/untxmia.fd
 File: untxmia.fd 2018/04/14 Fontinst v1.933 font definitions for U/ntxmia.
 )
-LaTeX Font Info:    Try loading font information for U+ntxsym on input line 28.
+LaTeX Font Info:    Try loading font information for U+ntxsym on input line 30.
 
 
 (/usr/local/texlive/2018/texmf-dist/tex/latex/newtx/untxsym.fd
 File: untxsym.fd 2015/03/20 Fontinst v1.933 font definitions for U/ntxsym.
 )
-LaTeX Font Info:    Try loading font information for U+ntxsyc on input line 28.
+LaTeX Font Info:    Try loading font information for U+ntxsyc on input line 30.
 
 
 (/usr/local/texlive/2018/texmf-dist/tex/latex/newtx/untxsyc.fd
 File: untxsyc.fd 2012/04/12 Fontinst v1.933 font definitions for U/ntxsyc.
 )
-LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
-(Font)              scaled to size 9.0pt on input line 28.
-LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
-(Font)              scaled to size 9.0pt on input line 28.
-LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
-(Font)              scaled to size 7.3pt on input line 28.
-LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
-(Font)              scaled to size 5.5pt on input line 28.
-LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
-(Font)              scaled to size 10.0pt on input line 30.
-LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <10> not available
-(Font)              Font shape `JT1/gt/m/n' tried instead on input line 30.
-LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <10> not available
-(Font)              Font shape `JY1/gt/m/n' tried instead on input line 30.
-LaTeX Font Info:    Font shape `T1/ntxtlf/bx/n' in size <10> not available
-(Font)              Font shape `T1/ntxtlf/b/n' tried instead on input line 30.
-LaTeX Font Info:    Font shape `T1/ntxtlf/b/n' will be
-(Font)              scaled to size 10.0pt on input line 30.
-LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
-(Font)              scaled to size 10.0pt on input line 31.
-LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
-(Font)              scaled to size 7.3pt on input line 31.
-LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
-(Font)              scaled to size 5.5pt on input line 31.
-LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
-(Font)              scaled to size 10.95pt on input line 35.
-LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
-(Font)              scaled to size 8.0pt on input line 35.
-LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
-(Font)              scaled to size 6.1pt on input line 35.
-
-Overfull \vbox (1.2871pt too high) detected at line 35
+Overfull \vbox (0.73058pt too high) detected at line 30
  []
 
 LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
-(Font)              scaled to size 12.0pt on input line 40.
-LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <12> not available
-(Font)              Font shape `JT1/gt/m/n' tried instead on input line 40.
-LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <12> not available
-(Font)              Font shape `JY1/gt/m/n' tried instead on input line 40.
-LaTeX Font Info:    Font shape `T1/ntxtlf/bx/n' in size <12> not available
-(Font)              Font shape `T1/ntxtlf/b/n' tried instead on input line 40.
+(Font)              scaled to size 9.0pt on input line 30.
+LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
+(Font)              scaled to size 9.0pt on input line 30.
+LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
+(Font)              scaled to size 7.3pt on input line 30.
+LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
+(Font)              scaled to size 5.5pt on input line 30.
+LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
+(Font)              scaled to size 10.0pt on input line 32.
+LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <10> not available
+(Font)              Font shape `JT1/gt/m/n' tried instead on input line 32.
+LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <10> not available
+(Font)              Font shape `JY1/gt/m/n' tried instead on input line 32.
+LaTeX Font Info:    Font shape `T1/ntxtlf/bx/n' in size <10> not available
+(Font)              Font shape `T1/ntxtlf/b/n' tried instead on input line 32.
 LaTeX Font Info:    Font shape `T1/ntxtlf/b/n' will be
-(Font)              scaled to size 12.0pt on input line 40.
+(Font)              scaled to size 10.0pt on input line 32.
+LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
+(Font)              scaled to size 10.0pt on input line 34.
+LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
+(Font)              scaled to size 7.3pt on input line 34.
+LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
+(Font)              scaled to size 5.5pt on input line 34.
+LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
+(Font)              scaled to size 10.95pt on input line 37.
+LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
+(Font)              scaled to size 8.0pt on input line 37.
+LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
+(Font)              scaled to size 6.1pt on input line 37.
+LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
+(Font)              scaled to size 12.0pt on input line 46.
+LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <12> not available
+(Font)              Font shape `JT1/gt/m/n' tried instead on input line 46.
+LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <12> not available
+(Font)              Font shape `JY1/gt/m/n' tried instead on input line 46.
+LaTeX Font Info:    Font shape `T1/ntxtlf/bx/n' in size <12> not available
+(Font)              Font shape `T1/ntxtlf/b/n' tried instead on input line 46.
+LaTeX Font Info:    Font shape `T1/ntxtlf/b/n' will be
+(Font)              scaled to size 12.0pt on input line 46.
 (I search kanjifont definition file: . . ) (I search font definition file: . .
 . . . . . . . . )
 LaTeX Font Info:    Try loading font information for T1+ntxsups on input line 4
-3.
+9.
 
 (/usr/local/texlive/2018/texmf-dist/tex/latex/newtx/t1ntxsups.fd
 File: t1ntxsups.fd 2015/01/17 v1.0
 )
 LaTeX Font Info:    Font shape `T1/ntxsups/m/n' will be
-(Font)              scaled to size 10.95pt on input line 43.
-LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <9> not available
-(Font)              Font shape `JT1/gt/m/n' tried instead on input line 52.
-LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <9> not available
-(Font)              Font shape `JY1/gt/m/n' tried instead on input line 52.
-LaTeX Font Info:    Font shape `T1/ntxtlf/bx/n' in size <9> not available
-(Font)              Font shape `T1/ntxtlf/b/n' tried instead on input line 52.
-LaTeX Font Info:    Font shape `T1/ntxtlf/b/n' will be
-(Font)              scaled to size 9.0pt on input line 52.
-
-
-LaTeX Warning: Citation `iota' on page 1 undefined on input line 52.
-
+(Font)              scaled to size 10.95pt on input line 49.
+ [1]
 LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
-(Font)              scaled to size 8.0pt on input line 61.
+(Font)              scaled to size 8.0pt on input line 69.
 LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
-(Font)              scaled to size 6.1pt on input line 61.
-[1]
-
-LaTeX Warning: Reference `sec:consider' on page 2 undefined on input line 70.
-
-
-LaTeX Warning: Citation `byzgen' on page 2 undefined on input line 94.
-
-
-LaTeX Warning: Citation `bft' on page 2 undefined on input line 97.
-
-[2]
+(Font)              scaled to size 6.1pt on input line 69.
+ [2]
 LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
-(Font)              scaled to size 12.0pt on input line 114.
+(Font)              scaled to size 12.0pt on input line 122.
 LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
-(Font)              scaled to size 8.8pt on input line 114.
+(Font)              scaled to size 8.8pt on input line 122.
 LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
-(Font)              scaled to size 6.6pt on input line 114.
+(Font)              scaled to size 6.6pt on input line 122.
 LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <8.8> not available
-(Font)              Font shape `JT1/gt/m/n' tried instead on input line 114.
+(Font)              Font shape `JT1/gt/m/n' tried instead on input line 122.
 LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <8.8> not available
-(Font)              Font shape `JY1/gt/m/n' tried instead on input line 114.
+(Font)              Font shape `JY1/gt/m/n' tried instead on input line 122.
 LaTeX Font Info:    Font shape `T1/ntxtlf/bx/n' in size <8.8> not available
-(Font)              Font shape `T1/ntxtlf/b/n' tried instead on input line 114.
+(Font)              Font shape `T1/ntxtlf/b/n' tried instead on input line 122.
 
 LaTeX Font Info:    Font shape `T1/ntxtlf/b/n' will be
-(Font)              scaled to size 8.8pt on input line 114.
+(Font)              scaled to size 8.8pt on input line 122.
 LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <6.6> not available
-(Font)              Font shape `JT1/gt/m/n' tried instead on input line 114.
+(Font)              Font shape `JT1/gt/m/n' tried instead on input line 122.
 LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <6.6> not available
-(Font)              Font shape `JY1/gt/m/n' tried instead on input line 114.
+(Font)              Font shape `JY1/gt/m/n' tried instead on input line 122.
 LaTeX Font Info:    Font shape `T1/ntxtlf/bx/n' in size <6.6> not available
-(Font)              Font shape `T1/ntxtlf/b/n' tried instead on input line 114.
+(Font)              Font shape `T1/ntxtlf/b/n' tried instead on input line 122.
 
 LaTeX Font Info:    Font shape `T1/ntxtlf/b/n' will be
-(Font)              scaled to size 6.6pt on input line 114.
-LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <8> not available
-(Font)              Font shape `JT1/gt/m/n' tried instead on input line 127.
-LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <8> not available
-(Font)              Font shape `JY1/gt/m/n' tried instead on input line 127.
-LaTeX Font Info:    Font shape `T1/ntxtlf/bx/n' in size <8> not available
-(Font)              Font shape `T1/ntxtlf/b/n' tried instead on input line 127.
+(Font)              scaled to size 6.6pt on input line 122.
 
-LaTeX Font Info:    Font shape `T1/ntxtlf/b/n' will be
-(Font)              scaled to size 8.0pt on input line 127.
-LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <6.1> not available
-(Font)              Font shape `JT1/gt/m/n' tried instead on input line 127.
-LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <6.1> not available
-(Font)              Font shape `JY1/gt/m/n' tried instead on input line 127.
-LaTeX Font Info:    Font shape `T1/ntxtlf/bx/n' in size <6.1> not available
-(Font)              Font shape `T1/ntxtlf/b/n' tried instead on input line 127.
-
-LaTeX Font Info:    Font shape `T1/ntxtlf/b/n' will be
-(Font)              scaled to size 6.1pt on input line 127.
-LaTeX Font Info:    Font shape `OT1/ntxtlf/b/n' will be
-(Font)              scaled to size 10.95pt on input line 138.
-LaTeX Font Info:    Font shape `OT1/ntxtlf/b/n' will be
-(Font)              scaled to size 8.0pt on input line 138.
-LaTeX Font Info:    Font shape `OT1/ntxtlf/b/n' will be
-(Font)              scaled to size 6.1pt on input line 138.
- [3]
-
-LaTeX Font Warning: Font shape `JT1/mc/m/sc' undefined
-(Font)              using `JT1/mc/m/n' instead on input line 182.
-
-
-LaTeX Font Warning: Font shape `JY1/mc/m/sc' undefined
-(Font)              using `JY1/mc/m/n' instead on input line 182.
-
-LaTeX Font Info:    Font shape `T1/ntxtlf/m/sc' will be
-(Font)              scaled to size 10.95pt on input line 182.
-LaTeX Font Info:    Font shape `OT1/ntxtlf/b/n' will be
-(Font)              scaled to size 9.0pt on input line 191.
-LaTeX Font Info:    Font shape `OT1/ntxtlf/b/n' will be
-(Font)              scaled to size 7.3pt on input line 191.
-LaTeX Font Info:    Font shape `OT1/ntxtlf/b/n' will be
-(Font)              scaled to size 5.5pt on input line 191.
-[4]
-Sorry, I don't know how to forget kinsoku rules.
-
-LaTeX Warning: Citation `loe' on page 5 undefined on input line 215.
-
-Sorry, I don't know how to forget kinsoku rules.
-Excluding 'comment' comment. (./example.bbl
-Sorry, I don't know how to forget kinsoku rules.
 (I search kanjifont definition file: . . ) (I search font definition file: . .
 . . . . . . . . )
-LaTeX Font Info:    Try loading font information for T1+ntxtt on input line 6.
+LaTeX Font Info:    Try loading font information for T1+ntxtt on input line 147
+.
 
 (/usr/local/texlive/2018/texmf-dist/tex/latex/newtx/t1ntxtt.fd
 File: t1ntxtt.fd 2012/04/20 v3.1
 )
 LaTeX Font Info:    Font shape `T1/ntxtt/m/n' will be
-(Font)              scaled to size 9.0pt on input line 6.
+(Font)              scaled to size 10.95pt on input line 147.
+LaTeX Font Info:    Font shape `T1/ntxtt/m/n' will be
+(Font)              scaled to size 7.0pt on input line 147.
+ (./hc.tla
+LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
+(Font)              scaled to size 7.0pt on input line 1.
+)
+LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <9> not available
+(Font)              Font shape `JT1/gt/m/n' tried instead on input line 148.
+LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <9> not available
+(Font)              Font shape `JY1/gt/m/n' tried instead on input line 148.
+LaTeX Font Info:    Font shape `T1/ntxtlf/bx/n' in size <9> not available
+(Font)              Font shape `T1/ntxtlf/b/n' tried instead on input line 148.
 
+LaTeX Font Info:    Font shape `T1/ntxtlf/b/n' will be
+(Font)              scaled to size 9.0pt on input line 148.
+
+
+LaTeX Font Warning: Font shape `JT1/mc/m/it' undefined
+(Font)              using `JT1/mc/m/n' instead on input line 153.
+
+
+LaTeX Font Warning: Font shape `JY1/mc/m/it' undefined
+(Font)              using `JY1/mc/m/n' instead on input line 153.
+
+LaTeX Font Info:    Font shape `T1/ntxtlf/m/it' will be
+(Font)              scaled to size 10.95pt on input line 153.
+
+LaTeX Font Warning: Font shape `JT1/mc/m/sc' undefined
+(Font)              using `JT1/mc/m/n' instead on input line 154.
+
+
+LaTeX Font Warning: Font shape `JY1/mc/m/sc' undefined
+(Font)              using `JY1/mc/m/n' instead on input line 154.
+
+LaTeX Font Info:    Font shape `T1/ntxtlf/m/sc' will be
+(Font)              scaled to size 10.95pt on input line 154.
+LaTeX Font Info:    Font shape `T1/ntxtlf/m/sc' will be
+(Font)              scaled to size 9.0pt on input line 155.
+[3]
+LaTeX Font Info:    Font shape `OT1/ntxtlf/m/it' will be
+(Font)              scaled to size 10.95pt on input line 171.
+LaTeX Font Info:    Font shape `OT1/ntxtlf/m/it' will be
+(Font)              scaled to size 8.0pt on input line 171.
+LaTeX Font Info:    Font shape `OT1/ntxtlf/m/it' will be
+(Font)              scaled to size 6.1pt on input line 171.
+LaTeX Font Info:    Font shape `OT1/ntxtlf/m/it' will be
+(Font)              scaled to size 9.0pt on input line 172.
+LaTeX Font Info:    Font shape `OT1/ntxtlf/m/it' will be
+(Font)              scaled to size 7.3pt on input line 172.
+LaTeX Font Info:    Font shape `OT1/ntxtlf/m/it' will be
+(Font)              scaled to size 5.5pt on input line 172.
+LaTeX Font Info:    Font shape `T1/ntxtt/m/n' will be
+(Font)              scaled to size 9.0pt on input line 172.
+LaTeX Font Info:    Font shape `OT1/ntxtlf/m/it' will be
+(Font)              scaled to size 12.0pt on input line 188.
+LaTeX Font Info:    Font shape `OT1/ntxtlf/m/it' will be
+(Font)              scaled to size 8.8pt on input line 188.
+LaTeX Font Info:    Font shape `OT1/ntxtlf/m/it' will be
+(Font)              scaled to size 6.6pt on input line 188.
+ [4] [5]
+LaTeX Font Info:    Font shape `OT1/ntxtlf/b/n' will be
+(Font)              scaled to size 10.95pt on input line 233.
+LaTeX Font Info:    Font shape `OT1/ntxtlf/b/n' will be
+(Font)              scaled to size 8.0pt on input line 233.
+LaTeX Font Info:    Font shape `OT1/ntxtlf/b/n' will be
+(Font)              scaled to size 6.1pt on input line 233.
+ Excluding 'comment' comment.
+
+LaTeX Font Warning: Font shape `JT1/mc/bx/it' undefined
+(Font)              using `JT1/mc/bx/n' instead on input line 288.
+
+
+LaTeX Font Warning: Font shape `JY1/mc/bx/it' undefined
+(Font)              using `JY1/mc/bx/n' instead on input line 288.
+
+LaTeX Font Info:    Font shape `T1/ntxtlf/bx/it' in size <10.95> not available
+(Font)              Font shape `T1/ntxtlf/b/it' tried instead on input line 288
+.
+LaTeX Font Info:    Font shape `T1/ntxtlf/b/it' will be
+(Font)              scaled to size 10.95pt on input line 288.
+LaTeX Font Info:    Font shape `JT1/mc/bx/it' in size <10.95> not available
+(Font)              Font shape `JT1/gt/m/n' tried instead on input line 288.
+LaTeX Font Info:    Font shape `JY1/mc/bx/it' in size <10.95> not available
+(Font)              Font shape `JY1/gt/m/n' tried instead on input line 288.
+(./Ledger.tla)
+LaTeX Font Info:    Font shape `OT1/ntxtlf/b/n' will be
+(Font)              scaled to size 9.0pt on input line 301.
+LaTeX Font Info:    Font shape `OT1/ntxtlf/b/n' will be
+(Font)              scaled to size 7.3pt on input line 301.
+LaTeX Font Info:    Font shape `OT1/ntxtlf/b/n' will be
+(Font)              scaled to size 5.5pt on input line 301.
+ (./LedgerInv.tla) (./MVCC_Ledger.tla) [6] [7] [8]
+LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <8> not available
+(Font)              Font shape `JT1/gt/m/n' tried instead on input line 355.
+LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <8> not available
+(Font)              Font shape `JY1/gt/m/n' tried instead on input line 355.
+LaTeX Font Info:    Font shape `T1/ntxtlf/bx/n' in size <8> not available
+(Font)              Font shape `T1/ntxtlf/b/n' tried instead on input line 355.
+
+LaTeX Font Info:    Font shape `T1/ntxtlf/b/n' will be
+(Font)              scaled to size 8.0pt on input line 355.
+LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <6.1> not available
+(Font)              Font shape `JT1/gt/m/n' tried instead on input line 355.
+LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <6.1> not available
+(Font)              Font shape `JY1/gt/m/n' tried instead on input line 355.
+LaTeX Font Info:    Font shape `T1/ntxtlf/bx/n' in size <6.1> not available
+(Font)              Font shape `T1/ntxtlf/b/n' tried instead on input line 355.
+
+LaTeX Font Info:    Font shape `T1/ntxtlf/b/n' will be
+(Font)              scaled to size 6.1pt on input line 355.
+ [9]
+Sorry, I don't know how to forget kinsoku rules.
+[10]
+Sorry, I don't know how to forget kinsoku rules.
+Excluding 'comment' comment. (./example.bbl
+Sorry, I don't know how to forget kinsoku rules.
 
 LaTeX Font Warning: Font shape `JT1/gt/m/it' undefined
 (Font)              using `JT1/gt/m/n' instead on input line 20.
@@ -753,14 +827,14 @@ LaTeX Font Warning: Font shape `JY1/gt/m/it' undefined
 
 LaTeX Font Info:    Font shape `T1/ntxtlf/m/it' will be
 (Font)              scaled to size 9.0pt on input line 20.
-) [5] (./example.aux) ) 
+[11]) [12] (./example.aux) ) 
 Here is how much of TeX's memory you used:
- 4422 strings out of 493248
- 56270 string characters out of 6144402
- 115548 words of memory out of 5000000
- 8282 multiletter control sequences out of 15000+600000
- 136707 words of font info for 201 fonts, out of 8000000 for 9000
+ 6096 strings out of 493248
+ 78499 string characters out of 6144402
+ 489353 words of memory out of 5000000
+ 9929 multiletter control sequences out of 15000+600000
+ 174029 words of font info for 245 fonts, out of 8000000 for 9000
  929 hyphenation exceptions out of 8191
- 34i,16n,41p,619b,320s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 34i,7n,41p,619b,1280s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on example.dvi (5 pages, 34500 bytes).
+Output written on example.dvi (12 pages, 71676 bytes).
