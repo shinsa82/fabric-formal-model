@@ -16,6 +16,8 @@ Read "モデリングの方針" for details. 上のものほど抽象度が高�
 - [MVCC_Ledger.tla](MVCC_Ledger.tla): Ledger の MVCC 仕様
 - [MVCC_Consensus_Ledger.tla](MVCC_Consensus_Ledger.tla): Ledger の複数ノード MVCC 仕様
 
+- [Datatype.tla](Datatype.tla): 上記モジュールから読み込まれる共通コンポーネント
+
 ## インポート & 証明チェック方法 (TLA+ Toolbox での方法)
 
 ### プロジェクトのインポート
