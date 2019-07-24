@@ -101,13 +101,14 @@ THEOREM Existential == \E y: [](3 = y + 1)
     <1> QED OBVIOUS
 
 (* provability of temporal quantification *)
+(*
 VARIABLE y0
 THEOREM Hiding == [](y0 = 2) => \EE y: [](3 = y + 1)
     <1> WITNESS y0 
     <1> QED OBVIOUS
+*)
 
 ----
-
 (******************************************************************************)
 (* Meta theorem for proving an invariant (failed)                             *)
 (******************************************************************************)
@@ -138,6 +139,22 @@ PROOF
         OBVIOUS
     <1> QED BY <1>1, <1>2, <1>3
 
+THEOREM InvMeta3 == 
+    ASSUME
+        NEW Init, NEW Next, NEW vars, NEW Invariant,
+        ASSUME Init PROVE Invariant,
+        ASSUME Invariant, Next PROVE Invariant',
+        ASSUME Invariant, UNCHANGED vars PROVE Invariant'
+    PROVE Init /\ [][Next]_vars => []Invariant
+PROOF
+    <1>1 Init => Invariant
+        OBVIOUS
+    <1>2 Invariant /\ Next => Invariant'
+        OBVIOUS
+    <1>3 Invariant /\ UNCHANGED vars => Invariant'
+        OBVIOUS
+    <1> QED BY <1>1, <1>2, <1>3
+
 \* test
 
 VARIABLE v
@@ -145,21 +162,21 @@ VARIABLE v
 II(_v) == INSTANCE Inner WITH innerVar <- _v 
 OuterTh == II(v)!InnerTh
 
-Init == v = 2
-Next == v' = v + 2 
-Spec == Init /\ [][Next]_v 
-Inv == v > 0
+A_Init == v = 2
+A_Next == v' = v + 2 
+A_Spec == A_Init /\ [][A_Next]_v 
+A_Inv == v > 0
 
-THEOREM Spec => []Inv
+THEOREM A_Spec => []A_Inv
 PROOF
-    <1>1 ASSUME Init PROVE Inv
-        OMITTED
-    <1>2 ASSUME Inv, Next PROVE Inv'
-        OMITTED
-    <1>3 ASSUME Inv, UNCHANGED v PROVE Inv'
-        OMITTED
-    <1> QED BY InvMeta2, <1>1, <1>2, <1>3 DEF Spec
+    <1>1 ASSUME A_Init PROVE A_Inv
+        BY <1>1 DEF A_Init, A_Inv
+    <1>2 ASSUME A_Inv, A_Next PROVE A_Inv'
+        BY <1>2 DEF A_Inv, A_Next
+    <1>3 ASSUME A_Inv, UNCHANGED v PROVE A_Inv'
+        BY <1>3 DEF A_Inv
+    <1> QED BY PTL, <1>1, <1>2, <1>3, InvMeta3 DEF A_Spec, A_Init, A_Next, A_Inv
 ================================================================================
 \* Modification History
-\* Last modified Fri Jul 19 04:19:43 JST 2019 by shinsa
+\* Last modified Wed Jul 24 04:04:55 JST 2019 by shinsa
 \* Created Thu Jul 04 16:52:28 JST 2019 by shinsa
