@@ -13,25 +13,22 @@ VARIABLES state,    \* current state of the ledger state machine.
           index     \* unprocessed TX index at the blockchain.
 vars == <<state, chain, index>>
 
+
 (******************************************************************************)
-(*  Type invariant                                                            *)
+(* Datatype Definition                                                        *)
 (******************************************************************************)
+\* Each entry in its blockchain (chain) has a flag if it's valid or not.
+\* Before the TX is processed, its value is NULL.
 ChainEntry == [tx: TX, is_valid: BOOLEAN \union {NULL}] 
-Chain == Seq(ChainEntry)
-TypeInv ==
-    /\ state \in State
-    /\ index \in Nat
-    /\ index > 0
-    \* Each TX in the blockchain has a flag if it's valid or not. Before the TX
-    \* is processed, its value is NULL.
-    /\ chain \in Chain
+Chain      == Seq(ChainEntry)
+
 ----
 (******************************************************************************)
 (* Initial condition                                                          *)
 (******************************************************************************)
 Init ==
     /\ state = InitState    \* state is at the initial state, and 
-    /\ index = 1
+    /\ index = 1            \* note that sequence index starts from 1, not 0
     /\ chain = <<>>         \* empty transaction queue.
 
 ----
@@ -43,6 +40,7 @@ Init ==
 (* SubmitTX: Client appends a transaction to the transaction queue.           *)
 (******************************************************************************)
 SubmitTX(tx) ==
+    /\ tx \in TX \* TX type check
     /\ chain' = Append(chain, [tx |-> tx, is_valid |-> NULL])
     /\ UNCHANGED <<state, index>> 
 
@@ -55,7 +53,6 @@ ProcessTX_OK ==
     LET
         f == chain[index].tx.f
     IN
-        \* /\ Len(chain) >= index
         /\ index \in DOMAIN chain
         /\ chain' = [chain EXCEPT ![index].is_valid = TRUE]  \* update validity flag
         /\ index' = index + 1   \* increment the index.
@@ -65,25 +62,48 @@ ProcessTX_ERR ==
     LET
         f == chain[index].tx.f
     IN
-        \* /\ Len(chain) >= index
         /\ index \in DOMAIN chain
         /\ chain' = [chain EXCEPT ![index].is_valid = FALSE]  \* see above.
         /\ index' = index + 1  \* see above.
         /\ UNCHANGED state     \* state does not change due to invalid TX.
 
-Next == (\E tx \in TX: SubmitTX(tx)) \/ ProcessTX_OK \/ ProcessTX_ERR
+Next == (\E tx: SubmitTX(tx)) \/ ProcessTX_OK \/ ProcessTX_ERR
 
 (******************************************************************************)
 (* Specification                                                              *)
 (******************************************************************************)    
 Spec == Init /\ [][Next]_vars
 
+(******************************************************************************)
+(* Unconditional Induction Lemma                                              *)
+(******************************************************************************)
+LEMMA SpecInduction == 
+    ASSUME
+        NEW Invariant,
+        ASSUME Init PROVE Invariant,
+        ASSUME Invariant, NEW tx, SubmitTX(tx) PROVE Invariant',
+        ASSUME Invariant, ProcessTX_OK PROVE Invariant',
+        ASSUME Invariant, ProcessTX_ERR PROVE Invariant'
+    PROVE
+        Spec => []Invariant
+PROOF
+    <1>1. Init => Invariant OBVIOUS
+    <1>2. Invariant /\ Next => Invariant' OBVIOUS
+    <1>3. Invariant /\ UNCHANGED vars => Invariant' OBVIOUS
+    <1> QED BY PTL, <1>1, <1>2, <1>3 DEF Spec
+    
 ----
 (******************************************************************************)
 (* Invariants                                                                 *)
 (******************************************************************************)
-Finality == TRUE \* TODO
-Safety == Finality
+
+(******************************************************************************)
+(*  Type invariant                                                            *)
+(******************************************************************************)
+TypeInv ==
+    /\ state \in State
+    /\ (index \in Nat /\ index > 0)
+    /\ chain \in Chain
 
 \* Invariant (safety) on the blockchain
 ChainInv ==
@@ -92,6 +112,29 @@ ChainInv ==
     /\ \A i \in {i \in Nat: index <= i} \cap DOMAIN chain: chain[i].is_valid = NULL
 
 Inv == TypeInv /\ ChainInv
+
+(* Type safety (invariant) proof that use the induction lemma above *)
+THEOREM TypeSafety == Spec => []TypeInv
+PROOF
+(*
+    <1>1. ASSUME Init PROVE TypeInv OMITTED
+    <1>2. ASSUME TypeInv, NEW tx, SubmitTX(tx) PROVE TypeInv' OMITTED
+    <1>3. ASSUME TypeInv, ProcessTX_OK PROVE TypeInv' OMITTED
+    <1>4. ASSUME TypeInv, ProcessTX_ERR PROVE TypeInv' OMITTED
+*)
+    <1>1. Init => TypeInv
+        <2>1. SUFFICES ASSUME Init PROVE TypeInv OBVIOUS
+        <2> QED OMITTED
+    <1>2. TypeInv /\ \E tx: SubmitTX(tx) => TypeInv'
+        <2>1. SUFFICES ASSUME TypeInv, NEW tx, SubmitTX(tx) PROVE TypeInv' OBVIOUS
+        <2> QED OMITTED
+    <1>3. TypeInv /\ ProcessTX_OK => TypeInv'
+        <2>1. SUFFICES ASSUME TypeInv, ProcessTX_OK PROVE TypeInv' OBVIOUS
+        <2> QED OMITTED
+    <1>4. TypeInv /\ ProcessTX_ERR => TypeInv'
+        <2>1. SUFFICES ASSUME TypeInv, ProcessTX_ERR PROVE TypeInv' OBVIOUS
+        <2> QED OMITTED
+    <1> QED BY PTL, <1>1, <1>2, <1>3, <1>4 DEF Spec, Next
 
 (* Invariant (safety) on the high-level Ledger *) 
 THEOREM LedgerInv == Spec => []Inv
@@ -143,5 +186,5 @@ PROOF
   
 ================================================================================
 \* Modification History
-\* Last modified Fri Jul 19 17:59:56 JST 2019 by shinsa
+\* Last modified Fri Jul 26 10:40:46 JST 2019 by shinsa
 \* Created Fri Jun 07 01:51:28 JST 2019 by shinsa
